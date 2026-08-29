@@ -1,0 +1,204 @@
+<div class="login-wrapper">
+
+    <!-- ══════════════════════════════════
+         PANEL IZQUIERDO — tinto
+    ══════════════════════════════════ -->
+    <div class="brand-panel">
+  
+      <!-- Textura de líneas -->
+      <div></div>
+      <!-- Círculos decorativos -->
+      <div class="deco-circle deco-circle-br"></div>
+      <div class="deco-circle deco-circle-tl"></div>
+  
+      <!-- Logo / nombre institución -->
+      <div class="brand-top">
+        <div class="brand-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+            fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="brand-name-block">
+          <p class="brand-name">Instituto San Martín</p>
+          <p class="brand-year">Est. 1962</p>
+        </div>
+      </div>
+  
+      <!-- Copy central -->
+      <div class="brand-body">
+        <div class="brand-divider">
+          <span class="divider-line"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+            fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <span class="divider-line"></span>
+        </div>
+  
+        <h1 class="brand-headline">
+          Bienvenido al<br>
+          <em>Portal Educativo</em>
+        </h1>
+        <p class="brand-desc">
+          Accedé a tus cursos, calificaciones, comunicados y toda la información institucional en un solo lugar.
+        </p>
+  
+        <ul class="feature-list">
+          <li><span class="feat-icon">📚</span><span>Gestión de cursos y materias</span></li>
+          <li><span class="feat-icon">📊</span><span>Seguimiento de calificaciones</span></li>
+          <li><span class="feat-icon">📢</span><span>Comunicados institucionales</span></li>
+          <li><span class="feat-icon">🗓️</span><span>Calendario académico</span></li>
+        </ul>
+      </div>
+  
+      <!-- Footer -->
+      <div class="brand-footer">
+        <div class="brand-security">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
+            fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span>Acceso seguro · Datos protegidos</span>
+        </div>
+        <p class="brand-copy">© 2026 Instituto San Martín · Todos los derechos reservados</p>
+      </div>
+    </div>
+  
+    <!-- ══════════════════════════════════
+         PANEL DERECHO — blanco
+    ══════════════════════════════════ -->
+    <div class="form-panel">
+  
+      <!-- Logo mobile -->
+      <div class="mobile-logo">
+        <div class="mobile-logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div>
+          <p class="mobile-brand-name">Instituto San Martín</p>
+          <p class="mobile-brand-year">Est. 1962</p>
+        </div>
+      </div>
+  
+      <div class="form-inner">
+  
+        <!-- ── Estado de éxito ── -->
+        <div *ngIf="success" class="success-state">
+          <div class="success-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+              fill="none" stroke="#5A262C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <h2 class="success-title">¡Bienvenido!</h2>
+          <p class="success-sub">Redirigiendo al portal...</p>
+        </div>
+  
+        <!-- ── Formulario ── -->
+        <ng-container *ngIf="!success">
+  
+          <div class="form-header">
+            <p class="form-label">Portal institucional</p>
+            <h2 class="form-title">Iniciar sesión</h2>
+            <p class="form-subtitle">Ingresá tus credenciales para continuar</p>
+          </div>
+  
+          <div class="title-accent"></div>
+  
+          <form (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
+  
+            <!-- Usuario -->
+            <div class="field">
+              <label for="username">Usuario</label>
+              <input
+                id="username"
+                type="text"
+                name="username"
+                [(ngModel)]="username"
+                placeholder="nombre.apellido"
+                autocomplete="username"
+                class="form-input"
+              />
+            </div>
+  
+            <!-- Contraseña -->
+            <div class="field">
+              <div class="field-header">
+                <label for="password">Contraseña</label>
+                <button type="button" class="forgot-btn">¿Olvidaste tu contraseña?</button>
+              </div>
+              <div class="password-wrapper">
+                <input
+                  id="password"
+                  [type]="showPassword ? 'text' : 'password'"
+                  name="password"
+                  [(ngModel)]="password"
+                  placeholder="••••••••"
+                  autocomplete="current-password"
+                  class="form-input input-password"
+                />
+                <button
+                  type="button"
+                  class="toggle-eye"
+                  (click)="togglePassword()"
+                  [attr.aria-label]="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+                >
+                  <!-- Eye open -->
+                  <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <!-- Eye closed -->
+                  <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                    <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+  
+            <!-- Recordar -->
+            <label class="remember-label">
+              <input type="checkbox" name="remember" [(ngModel)]="remember" />
+              <span>Recordar sesión</span>
+            </label>
+  
+            <!-- Error -->
+            <div *ngIf="error" class="error-box">{{ error }}</div>
+  
+            <!-- Submit -->
+            <button type="submit" class="btn-submit" [disabled]="loading">
+              <span *ngIf="loading" class="spinner"></span>
+              <span>{{ loading ? 'Verificando...' : 'Ingresar al portal' }}</span>
+            </button>
+  
+          </form>
+  
+          <!-- Hint -->
+          <p class="hint-text">
+            Demo: usuario <code>admin</code> / contraseña <code>1234</code>
+          </p>
+  
+          <!-- Footer links -->
+          <div class="footer-links">
+            <button type="button" class="footer-link">Mesa de ayuda</button>
+            <button type="button" class="footer-link">Privacidad</button>
+            <button type="button" class="footer-link">Soporte técnico</button>
+          </div>
+  
+        </ng-container>
+      </div>
+    </div>
+  
+  </div>
+  
